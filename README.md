@@ -48,20 +48,6 @@ For example, file/video.mp4 is available at rtmp://localhost/file/mp4:video.mp4
 
 ### Publishing live streams
 
-#### From Flash Media Live Encoder
-
-Flash Media Live Encoder is a free live encoder from Adobe.
-
-In the Encoding Options panel, check "Stream to Flash Media Server" and set the URL to:
-
-- **FMS URL**:  rtmp://localhost/live
-- **Backup URL**: (blank)
-- **Stream**: STREAM_NAME (whatever name you would like)
-
-Press the "Connect" button. Set the video format to H.264, and the audio format to AAC. Press the "Start" button.
-
-When you watch the stream over RTSP or RTMP, use the stream name specified above.
-
 #### From FFmpeg
 
 If you have an MP4 file with H.264 video and AAC audio:
@@ -113,7 +99,7 @@ Note that the RTSP server runs on port 80 by default.
 
 #### Via RTMP
 
-RTMP stream is for Flash Player. Flowplayer and JW Player are both good free players.
+RTMP stream is also available.
 
 **RTMP URL**: rtmp://localhost/live/STREAM_NAME
 
