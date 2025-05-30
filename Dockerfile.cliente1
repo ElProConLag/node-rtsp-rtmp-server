@@ -1,0 +1,19 @@
+FROM jrottenberg/ffmpeg:4.4-alpine
+
+WORKDIR /app
+
+# Instala unzip y curl
+RUN apk add --no-cache unzip curl
+
+# Descarga y descomprime el video
+RUN curl -O https://download.blender.org/demo/movies/BBB/bbb_sunflower_1080p_30fps_normal.mp4.zip && \
+    unzip bbb_sunflower_1080p_30fps_normal.mp4.zip && \
+    rm bbb_sunflower_1080p_30fps_normal.mp4.zip
+
+# Copia el archivo a la carpeta 'file' si es necesario
+RUN mkdir -p file && mv bbb_sunflower_1080p_30fps_normal.mp4 file/
+
+# Comando para mantener el contenedor corriendo y ejecutar ffmpeg en bucle
+COPY start_ffmpeg.sh /app/start_ffmpeg.sh
+RUN chmod +x /app/start_ffmpeg.sh
+ENTRYPOINT ["/app/start_ffmpeg.sh"]

@@ -3,11 +3,12 @@
 - Supports RTSP, RTMP/RTMPE/RTMPT/RTMPTE, and HTTP.
 - Supports only H.264 video and AAC audio (AAC-LC, HE-AAC v1/v2).
 
-### Installation without Docker
+### Installation
 
-    $ git clone https://github.com/iizukanao/node-rtsp-rtmp-server.git
-    $ cd node-rtsp-rtmp-server
-    $ npm install -d
+```bash
+git clone https://github.com/ElProConLag/node-rtsp-rtmp-server.git
+cd node-rtsp-rtmp-server
+```
 
 Also, install [CoffeeScript](https://coffeescript.org/) 1.x or 2.x.
 
@@ -50,15 +51,9 @@ For example, file/video.mp4 is available at rtmp://localhost/file/mp4:video.mp4
 
 #### From FFmpeg
 
-If you have an MP4 file with H.264 video and AAC audio:
-
-    $ ffmpeg -re -i input.mp4 -c:v copy -c:a copy -f flv rtmp://localhost/live/STREAM_NAME
-
-Or if you have an MP4 file that is encoded in other audio/video format:
-
-    $ ffmpeg -re -i input.mp4 -c:v libx264 -preset fast -c:a libfdk_aac -ab 128k -ar 44100 -f flv rtmp://localhost/live/STREAM_NAME
-
-Replace `input.mp4` with live audio/video sources.
+```bash
+ffmpeg -stream_loop -1 -re -i file/bbb_sunflower_1080p_30fps_normal.mp4 -c:v libx264 -preset fast -c:a aac -ac 2 -ab 128k -ar 44100 -f flv rtmp://localhost:1935/live/bigbuckbunny
+```
 
 #### From RTSP client
 
@@ -70,39 +65,16 @@ Or you can publish it over TCP instead of UDP, by specifying `-rtsp_transport tc
 
     $ ffmpeg -re -i input.mp4 -c:v libx264 -preset fast -c:a libfdk_aac -ab 128k -ar 44100 -f rtsp -rtsp_transport tcp rtsp://localhost:80/live/STREAM_NAME
 
-#### From GStreamer
-
-For an MP4 file with H.264 video and AAC audio:
-
-    $ gst-launch-0.10 filesrc location=input.mp4 ! qtdemux name=demux ! \
-        flvmux name=mux streamable=true ! queue ! \
-        rtmpsink location='rtmp://localhost/live/STREAM_NAME' demux. ! \
-        multiqueue name=mq ! h264parse ! mux. demux. ! mq. mq. ! aacparse ! mux.
-
-Replace `input.mp4` with live audio/video sources.
-
-For an RTSP source (at rtsp://192.168.1.1:5000/video1  in this example):
-
-    $ gst-launch-0.10 rtspsrc location=rtsp://192.168.1.1:5000/video1 ! decodebin ! \
-        x264enc bitrate=256 tune=zerolatency  ! h264parse ! flvmux name=mux streamable=true ! \
-        queue ! rtmpsink location='rtmp://localhost/live/STREAM_NAME' 
-
 ### Accessing the live stream
 
-#### Via RTSP
+```bash
+ffmpeg -y -i rtmp://localhost:1935/live/bigbuckbunny -c copy grabacion.flv
+```
 
-RTSP stream is for VLC media player or Android's VideoView.
 
-**RTSP URL**: rtsp://localhost:80/live/STREAM_NAME
+### Creating network for Docker containers
 
-Note that the RTSP server runs on port 80 by default.
-
-#### Via RTMP
-
-RTMP stream is also available.
-
-**RTMP URL**: rtmp://localhost/live/STREAM_NAME
-
-If you have rtmpdump installed, you can record the video with:
-
-    $ rtmpdump -v -r rtmp://localhost/live/STREAM_NAME -o dump.flv
+```bash
+docker network create rtmpnet
+docker run --rm --network rtmpnet NOMBRE_CONTENEDOR NOMBRE_IMAGEN
+```
