@@ -30,12 +30,9 @@ or use Node.js directly:
 If both `serverPort` and `rtmpServerPort` are >= 1024 in `config.coffee`, `sudo` is not needed.
 
 ### Docker Deploy Method
-
-If you would prefer building and executing this code in a docker container, you can do so by first building the container and then running it.
-
-    $  make build
-    $  make console
-
+```bash
+make build && make console
+```
 You may also want to use just `make run` to run the container as a daemon.  If you fiddle with the ports, you'll need to update the values in the Makefile as well to expose the desired ports to your system.
 
 ### Serving MP4 files as recorded streams
@@ -49,28 +46,17 @@ For example, file/video.mp4 is available at rtmp://localhost/file/mp4:video.mp4
 
 ### Publishing live streams
 
-#### From FFmpeg
-
 ```bash
-ffmpeg -stream_loop -1 -re -i file/bbb_sunflower_1080p_30fps_normal.mp4 -c:v libx264 -preset fast -c:a aac -ac 2 -ab 128k -ar 44100 -f flv rtmp://localhost:1935/live/bigbuckbunny
+docker build -f Dockerfile.cliente1 -t ffmpeg-client1 .
+docker run -d --name ffmpeg-client1 --add-host host.docker.internal:host-gateway ffmpeg-client1
 ```
-
-#### From RTSP client
-
-You can publish streams from RTSP client such as FFmpeg.
-
-    $ ffmpeg -re -i input.mp4 -c:v libx264 -preset fast -c:a libfdk_aac -ab 128k -ar 44100 -f rtsp rtsp://localhost:80/live/STREAM_NAME
-
-Or you can publish it over TCP instead of UDP, by specifying `-rtsp_transport tcp` option. TCP is favorable if you publish large data from FFmpeg.
-
-    $ ffmpeg -re -i input.mp4 -c:v libx264 -preset fast -c:a libfdk_aac -ab 128k -ar 44100 -f rtsp -rtsp_transport tcp rtsp://localhost:80/live/STREAM_NAME
 
 ### Accessing the live stream
 
 ```bash
-ffmpeg -y -i rtmp://localhost:1935/live/bigbuckbunny -c copy grabacion.flv
+docker build -f Dockerfile.cliente2 -t ffmpeg-client2 .
+docker run -d --name ffmpeg-client2 --add-host host.docker.internal:host-gateway ffmpeg-client2
 ```
-
 
 ### Creating network for Docker containers
 

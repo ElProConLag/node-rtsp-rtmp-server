@@ -9,7 +9,7 @@ lib-cov
 *.out
 *.pid
 *.gz
-
+*.rpm
 pids
 logs
 results
@@ -17,5 +17,5 @@ results
 npm-debug.log
 node_modules
 
-public
 package-lock.json
+*.pcap
