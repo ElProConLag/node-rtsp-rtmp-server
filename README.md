@@ -1,4 +1,4 @@
-# Node RTSP/RTMP Server with HLS Playback
+# Node RTSP/RTMP Server
 
 ![RTMP Client-Server Interaction](image.png)
 
