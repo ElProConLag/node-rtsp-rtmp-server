@@ -1,5 +1,6 @@
 ### Working environments
 - GitHub Codespaces - Insiders
+- Ubuntu 24.04 LTS with sudo/root access
 ### Repository Download
 ```bash
 git clone https://github.com/ElProConLag/node-rtsp-rtmp-server.git
