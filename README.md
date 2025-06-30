@@ -73,6 +73,17 @@ Este cliente utilizará FFmpeg para enviar un stream de video (ej. `bigbuckbunny
     ```
     Esto enviará el stream a `rtmp://host.docker.internal:1935/live/bigbuckbunny`.
 
+### Obtener direcciones IP de contenedores activos
+
+Para conocer la IP asignada a un contenedor en la red Docker `rtmpnet`, ejecuta:
+
+```bash
+# Lista contenedores en ejecución
+docker ps
+# Muestra la IP de un contenedor por nombre o ID
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <nombre_o_id_contenedor>
+```
+
 ### Desplegar Cliente Receptor (Cliente 2)
 
 Este cliente utilizará FFmpeg para conectarse al stream `live/bigbuckbunny` del servidor RTMP y guardarlo en un archivo `grabacion.flv` dentro del contenedor.
