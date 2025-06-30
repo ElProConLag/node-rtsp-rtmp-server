@@ -19,3 +19,6 @@ node_modules
 
 package-lock.json
 *.pcap
+packet_capture.txt
+__pycache__/scapy_capture.cpython-312.pyc
+__pycache__/scapy_rtmp_connect.cpython-312.pyc
