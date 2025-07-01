@@ -25,7 +25,7 @@ Asegúrate de tener los siguientes entornos o herramientas instaladas y configur
 
 *   **Entornos de Trabajo Soportados:**
     *   GitHub Codespaces - Insiders
-    *   Ubuntu 24.04 LTS (o similar con acceso sudo/root y Docker instalado)
+    *   Ubuntu 24.04 LTS (o similar con acceso sudo/root)
     *   Otras distribuciones oficiales de Ubuntu LTS como Xubuntu
 *   **Docker:** Necesario para construir y ejecutar los contenedores.
 *   **Git:** Para clonar el repositorio.
