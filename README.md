@@ -109,3 +109,23 @@ sudo timeout 30 tcpdump -i any -w tcpdump_capture.pcap
 ## Licencia
 
 Distribuido bajo la Licencia MIT. Ver `LICENSE` para más información.
+
+## Scripts de Pruebas y Ataques
+
+Esta sección documenta los scripts de Python utilizados para probar la robustez y seguridad del servidor RTMP.
+
+### `rtmp_dos.py`
+
+Este script simula un ataque de denegación de servicio (DoS) contra el servidor RTMP. Abre una gran cantidad de conexiones TCP (por defecto, 10,000), envía un comando `publish` en cada una y las mantiene abiertas para agotar los recursos del servidor. Intenta ajustar automáticamente el límite de descriptores de archivo (`ulimit`) del sistema para permitir un gran número de conexiones simultáneas.
+
+### `scapy_rtmp_hijack.py`
+
+Utiliza la biblioteca Scapy para construir y enviar paquetes RTMP a bajo nivel. Su objetivo es intentar un secuestro de stream (`hijacking`) enviando un comando `publish` para un stream que se asume ya está activo. Este script opera a un nivel más bajo que un cliente RTMP estándar, lo que permite omitir o alterar pasos del protocolo.
+
+### `scapy_rtmp_play_before_connect.py`
+
+Script de prueba diseñado para verificar la robustez del servidor. Envía comandos RTMP en un orden anómalo (un comando `play` antes del `connect` requerido) para observar cómo el servidor maneja peticiones fuera de secuencia.
+
+### `scapy_capture.py`
+
+Una herramienta de captura de paquetes de red que utiliza Scapy. Escucha en una interfaz de red específica, captura todo el tráfico y guarda un análisis detallado de cada paquete en el archivo `packet_capture.txt`. Es útil para depurar y analizar las interacciones de red en tiempo real.
