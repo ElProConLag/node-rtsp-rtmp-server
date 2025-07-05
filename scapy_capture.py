@@ -23,7 +23,20 @@ def main():
     """
     Función principal para iniciar el proceso de captura de paquetes.
     """
-    interface = "br-fa98ff1cadf0"
+
+    def get_docker_bridge_interface(network_name="rtmpnet"):
+        try:
+            result = subprocess.run([
+                "docker", "network", "inspect", network_name, "--format", "{{.Id}}"
+            ], capture_output=True, text=True, check=True)
+            net_id = result.stdout.strip()
+            if len(net_id) >= 12:
+                return f"br-{net_id[:12]}"
+        except Exception as e:
+            print(f"[!] No se pudo detectar la interfaz de red de Docker automáticamente: {e}")
+        return "docker0"
+
+    interface = get_docker_bridge_interface()
     print(f"Iniciando captura de paquetes en la interfaz {interface}...")
     print(f"Los resultados detallados se guardarán en {output_file}")
 

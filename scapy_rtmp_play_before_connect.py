@@ -13,7 +13,21 @@ No sobrescribe scripts existentes.
 # Configuración
 server_ip = "172.17.0.1"
 server_port = 1935
-net_interface = "br-fa98ff1cadf0"
+
+import subprocess
+def get_docker_bridge_interface(network_name="rtmpnet"):
+    try:
+        result = subprocess.run([
+            "docker", "network", "inspect", network_name, "--format", "{{.Id}}"
+        ], capture_output=True, text=True, check=True)
+        net_id = result.stdout.strip()
+        if len(net_id) >= 12:
+            return f"br-{net_id[:12]}"
+    except Exception as e:
+        print(f"[!] No se pudo detectar la interfaz de red de Docker automáticamente: {e}")
+    return "docker0"
+
+net_interface = get_docker_bridge_interface()
 
 # Utilidades para construir mensajes AMF0
 

@@ -126,6 +126,35 @@ Utiliza la biblioteca Scapy para construir y enviar paquetes RTMP a bajo nivel. 
 
 Script de prueba diseñado para verificar la robustez del servidor. Envía comandos RTMP en un orden anómalo (un comando `play` antes del `connect` requerido) para observar cómo el servidor maneja peticiones fuera de secuencia.
 
+Comportamiento esperado: el servidor debería rechazar la solicitud y no permitir la reproducción del stream.
+
+Comportamiento real: El código del servidor lanza un error al intentar procesar un tipo de dato AMF0 desconocido, lo que indica que el servidor no está manejando correctamente este caso anómalo.
+
+```text
+2025-07-05 00:36:32.423 [rtmp:handshake] warning: unknown message format, assuming format 1
+2025-07-05 00:36:32.427 [rtmp:client=F99g1HEY] requested stream undefined/bigbuckbunny
+2025-07-05 00:36:32.427 [rtmp:client=F99g1HEY] error: stream not found: undefined/bigbuckbunny
+2025-07-05 00:36:32.433 [rtmp] error parsing AMF0 command (maybe a bug); buf:
+2025-07-05 00:36:32.433 <Buffer 03 02 00 03 61 70 70 02 00 04 6c 69 76 65 02 00 04 74 79 70 65 02 00 0a 6e 6f 6e 70 72 69 76 61 74 65 02 00 00 00 00 09>
+/app/server.coffee:46
+    throw err;
+    ^
+
+Error: Unknown AMF0 data type: undefined
+    at parseAMF0Data (/app/rtmp.coffee:295:11)
+    at parseAMF0Object (/app/rtmp.coffee:207:16)
+    at parseAMF0Data (/app/rtmp.coffee:276:14)
+    at parseAMF0CommandMessage (/app/rtmp.coffee:248:16)
+    at /app/rtmp.coffee:2661:32
+    at RTMPSession.handleData (/app/rtmp.coffee:2682:7)
+    at Socket.<anonymous> (/app/rtmp.coffee:2717:23)
+    at emitOne (events.js:77:13)
+    at Socket.emit (events.js:169:7)
+    at readableAddChunk (_stream_readable.js:153:18)
+    at Socket.Readable.push (_stream_readable.js:111:10)
+    at TCP.onread (net.js:540:20)
+```
+
 ### `scapy_capture.py`
 
 Una herramienta de captura de paquetes de red que utiliza Scapy. Escucha en una interfaz de red específica, captura todo el tráfico y guarda un análisis detallado de cada paquete en el archivo `packet_capture.txt`. Es útil para depurar y analizar las interacciones de red en tiempo real.
