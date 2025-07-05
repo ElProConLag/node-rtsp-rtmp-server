@@ -1,0 +1,124 @@
+2 mensajes importantes
+
+1) 17350	11.105493872	172.18.0.1	172.18.0.2	TCP	670	[TCP Spurious Retransmission] 58838 → 1935 [PSH, ACK] Seq=3213857 Ack=49 Win=8192 Len=616
+Frame 17350: 670 bytes on wire (5360 bits), 670 bytes captured (5360 bits) on interface br-380b2498e4b8, id 0
+    Section number: 1
+    Interface id: 0 (br-380b2498e4b8)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Jul  4, 2025 22:32:17.730738263 -03
+    UTC Arrival Time: Jul  5, 2025 01:32:17.730738263 UTC
+    Epoch Arrival Time: 1751679137.730738263
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 0.061217976 seconds]
+    [Time delta from previous displayed frame: 0.061217976 seconds]
+    [Time since reference or first frame: 11.105493872 seconds]
+    Frame Number: 17350
+    Frame Length: 670 bytes (5360 bits)
+    Capture Length: 670 bytes (5360 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    [Coloring Rule Name: Bad TCP]
+    [Coloring Rule String: tcp.analysis.flags && !tcp.analysis.window_update && !tcp.analysis.keep_alive && !tcp.analysis.keep_alive_ack]
+Ethernet II, Src: 2a:27:15:08:dd:a3 (2a:27:15:08:dd:a3), Dst: c6:75:2f:c7:a9:b2 (c6:75:2f:c7:a9:b2)
+    Destination: c6:75:2f:c7:a9:b2 (c6:75:2f:c7:a9:b2)
+    Source: 2a:27:15:08:dd:a3 (2a:27:15:08:dd:a3)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 172.18.0.1, Dst: 172.18.0.2
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+    Total Length: 656
+    Identification: 0x0001 (1)
+    000. .... = Flags: 0x0
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x2040 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 172.18.0.1
+    Destination Address: 172.18.0.2
+Transmission Control Protocol, Src Port: 58838, Dst Port: 1935, Seq: 3213857, Ack: 49, Len: 616
+    Source Port: 58838
+    Destination Port: 1935
+    [Stream index: 1]
+    [Conversation completeness: Incomplete (12)]
+    [TCP Segment Len: 616]
+    Sequence Number: 3213857    (relative sequence number)
+    Sequence Number (raw): 804707092
+    [Next Sequence Number: 3214473    (relative sequence number)]
+    Acknowledgment Number: 49    (relative ack number)
+    Acknowledgment number (raw): 1700053086
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+    Window: 8192
+    [Calculated window size: 8192]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x211f [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (616 bytes)
+    Retransmitted TCP segment data (616 bytes)
+
+2) 17351	11.105538092	172.18.0.2	172.18.0.1	TCP	78	[TCP Dup ACK 17349#1] 1935 → 58838 [ACK] Seq=49 Ack=3643673 Win=10589 Len=0 TSval=2673459889 TSecr=3322662956 SLE=3213857 SRE=3214473
+Frame 17351: 78 bytes on wire (624 bits), 78 bytes captured (624 bits) on interface br-380b2498e4b8, id 0
+    Section number: 1
+    Interface id: 0 (br-380b2498e4b8)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Jul  4, 2025 22:32:17.730782483 -03
+    UTC Arrival Time: Jul  5, 2025 01:32:17.730782483 UTC
+    Epoch Arrival Time: 1751679137.730782483
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 0.000044220 seconds]
+    [Time delta from previous displayed frame: 0.000044220 seconds]
+    [Time since reference or first frame: 11.105538092 seconds]
+    Frame Number: 17351
+    Frame Length: 78 bytes (624 bits)
+    Capture Length: 78 bytes (624 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    [Coloring Rule Name: Bad TCP]
+    [Coloring Rule String: tcp.analysis.flags && !tcp.analysis.window_update && !tcp.analysis.keep_alive && !tcp.analysis.keep_alive_ack]
+Ethernet II, Src: c6:75:2f:c7:a9:b2 (c6:75:2f:c7:a9:b2), Dst: 2a:27:15:08:dd:a3 (2a:27:15:08:dd:a3)
+    Destination: 2a:27:15:08:dd:a3 (2a:27:15:08:dd:a3)
+    Source: c6:75:2f:c7:a9:b2 (c6:75:2f:c7:a9:b2)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 172.18.0.2, Dst: 172.18.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+    Total Length: 64
+    Identification: 0xf54a (62794)
+    010. .... = Flags: 0x2, Don't fragment
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0xed45 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 172.18.0.2
+    Destination Address: 172.18.0.1
+Transmission Control Protocol, Src Port: 1935, Dst Port: 58838, Seq: 49, Ack: 3643673, Len: 0
+    Source Port: 1935
+    Destination Port: 58838
+    [Stream index: 1]
+    [Conversation completeness: Incomplete (12)]
+    [TCP Segment Len: 0]
+    Sequence Number: 49    (relative sequence number)
+    Sequence Number (raw): 1700053086
+    [Next Sequence Number: 49    (relative sequence number)]
+    Acknowledgment Number: 3643673    (relative ack number)
+    Acknowledgment number (raw): 805136908
+    1011 .... = Header Length: 44 bytes (11)
+    Flags: 0x010 (ACK)
+    Window: 10589
+    [Calculated window size: 10589]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x585a [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (24 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps, No-Operation (NOP), No-Operation (NOP), SACK
+    [Timestamps]
+    [SEQ/ACK analysis]
