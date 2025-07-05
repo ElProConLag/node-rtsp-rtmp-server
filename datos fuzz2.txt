@@ -1,0 +1,62 @@
+9449	7.180040995	172.18.0.1	172.18.0.2	FTP-DATA	1066	FTP Data: 1012 bytes
+Frame 9449: 1066 bytes on wire (8528 bits), 1066 bytes captured (8528 bits) on interface br-380b2498e4b8, id 0
+    Section number: 1
+    Interface id: 0 (br-380b2498e4b8)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Jul  4, 2025 22:09:17.271265067 -03
+    UTC Arrival Time: Jul  5, 2025 01:09:17.271265067 UTC
+    Epoch Arrival Time: 1751677757.271265067
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 0.006235708 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 7.180040995 seconds]
+    Frame Number: 9449
+    Frame Length: 1066 bytes (8528 bits)
+    Capture Length: 1066 bytes (8528 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ftp-data]
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: 2a:27:15:08:dd:a3 (2a:27:15:08:dd:a3), Dst: c6:75:2f:c7:a9:b2 (c6:75:2f:c7:a9:b2)
+    Destination: c6:75:2f:c7:a9:b2 (c6:75:2f:c7:a9:b2)
+    Source: 2a:27:15:08:dd:a3 (2a:27:15:08:dd:a3)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 172.18.0.1, Dst: 172.18.0.2
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+    Total Length: 1052
+    Identification: 0x0001 (1)
+    000. .... = Flags: 0x0
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x1eb4 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 172.18.0.1
+    Destination Address: 172.18.0.2
+Transmission Control Protocol, Src Port: 20, Dst Port: 1935, Seq: 1, Ack: 1, Len: 1012
+    Source Port: 20
+    Destination Port: 1935
+    [Stream index: 4]
+    [Conversation completeness: Incomplete (40)]
+    [TCP Segment Len: 1012]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 0
+    [Next Sequence Number: 1013    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 0
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+    Window: 8192
+    [Calculated window size: 8192]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x2a04 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (1012 bytes)
+FTP Data (1012 bytes data)
+[Setup frame: 9449]

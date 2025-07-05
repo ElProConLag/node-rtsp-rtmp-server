@@ -1,0 +1,62 @@
+83984	-93.336833921	172.18.0.1	172.18.0.2	TCP	110	[TCP ACKed unseen segment] [TCP Retransmission] 20 → 1935 [PSH, ACK] Seq=0 Ack=179804415 Win=8192 Len=1536
+Frame 83984: 110 bytes on wire (880 bits), 110 bytes captured (880 bits) on interface br-380b2498e4b8, id 0
+    Section number: 1
+    Interface id: 0 (br-380b2498e4b8)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Jul  4, 2025 22:24:23.371037363 -03
+    UTC Arrival Time: Jul  5, 2025 01:24:23.371037363 UTC
+    Epoch Arrival Time: 1751678663.371037363
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 0.000455114 seconds]
+    [Time delta from previous displayed frame: 0.248043145 seconds]
+    [Time since reference or first frame: -93.336833921 seconds]
+    Frame Number: 83984
+    Frame Length: 110 bytes (880 bits)
+    Capture Length: 110 bytes (880 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    [Coloring Rule Name: Bad TCP]
+    [Coloring Rule String: tcp.analysis.flags && !tcp.analysis.window_update && !tcp.analysis.keep_alive && !tcp.analysis.keep_alive_ack]
+Ethernet II, Src: 2a:27:15:08:dd:a3 (2a:27:15:08:dd:a3), Dst: c6:75:2f:c7:a9:b2 (c6:75:2f:c7:a9:b2)
+    Destination: c6:75:2f:c7:a9:b2 (c6:75:2f:c7:a9:b2)
+    Source: 2a:27:15:08:dd:a3 (2a:27:15:08:dd:a3)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 172.18.0.1, Dst: 172.18.0.2
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+    Total Length: 96
+    Identification: 0x0001 (1)
+    000. .... = Flags: 0x0
+    ...0 0000 1011 1001 = Fragment Offset: 1480
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x21b7 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 172.18.0.1
+    Destination Address: 172.18.0.2
+    [2 IPv4 Fragments (1556 bytes): #83983(1480), #83984(76)]
+Transmission Control Protocol, Src Port: 20, Dst Port: 1935, Seq: 0, Ack: 179804415, Len: 1536
+    Source Port: 20
+    Destination Port: 1935
+    [Stream index: 4]
+    [Conversation completeness: Complete, WITH_DATA (47)]
+    [TCP Segment Len: 1536]
+    Sequence Number: 0    (relative sequence number)
+    Sequence Number (raw): 0
+    [Next Sequence Number: 1536    (relative sequence number)]
+    Acknowledgment Number: 179804415    (relative ack number)
+    Acknowledgment number (raw): 0
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+    Window: 8192
+    [Calculated window size: 8192]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0xa23e [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (1536 bytes)
+    Retransmitted TCP segment data (1536 bytes)
